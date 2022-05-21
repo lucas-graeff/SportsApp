@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="lucas.graeff.sportsapp.ui.home.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_playerProfileFragment"
+            app:destination="@id/playerProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playerProfileFragment"
+        android:name="lucas.graeff.sportsapp.ui.playerProfile.PlayerProfileFragment"
+        android:label="PlayerProfileFragment" >
+        <argument
+            android:name="player"
+            app:argType="lucas.graeff.sportsapp.models.Player" />
+    </fragment><action android:id="@+id/action_global_playerProfileFragment" app:destination="@id/playerProfileFragment"/>
+</navigation>
