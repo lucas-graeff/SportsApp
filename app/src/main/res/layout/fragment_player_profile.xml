@@ -2,6 +2,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable name="player" type="lucas.graeff.sportsapp.models.Player"/>
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,8 +24,8 @@
                 android:id="@+id/topAppBar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:title="Player"
-                app:navigationIcon="@drawable/ic_close_24"
+                app:title="@{player.strPlayer}"
+                app:navigationIcon="@drawable/ic_arrow_back_24"
                 app:actionModeCloseDrawable="@drawable/ic_close_24"/>
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -29,13 +37,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:src="@drawable/ic_person_150"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/player_profile_picture"/>
 
         <TextView
             android:id="@+id/txt_player_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Player Name"
+            android:text="@{player.strPlayer}"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:layout_gravity="center_horizontal"/>
 
@@ -44,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Sport"
+            android:text="@{player.strSport}"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:layout_gravity="center_horizontal"/>
 
@@ -56,12 +65,12 @@
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Summary" />
+                android:text="@string/summary" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bio" />
+                android:text="@string/bio" />
         </com.google.android.material.tabs.TabLayout>
 
         <androidx.viewpager2.widget.ViewPager2
@@ -69,13 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sport"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
     </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 </layout>

@@ -2,6 +2,7 @@ package lucas.graeff.sportsapp.util
 
 class Constants {
     companion object {
-        const val BASE_URL = "https://www.thesportsdb.com/api/v1/json/2/"
+        private const val API_KEY = "2"
+        const val BASE_URL = "https://www.thesportsdb.com/api/v1/json/${API_KEY}/"
     }
 }

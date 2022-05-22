@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">SportsApp</string>
+    <string name="search">Search</string>
+    <string name="summary">Summary</string>
+    <string name="dob">DOB</string>
+    <string name="birthplace">BIRTHPLACE</string>
+    <string name="height">HEIGHT</string>
+    <string name="weight">WEIGHT</string>
+    <string name="team">TEAM</string>
+    <string name="position">POSITION</string>
+    <string name="nationality">NATIONALITY</string>
+    <string name="bio">Bio</string>
+    <string name="player_profile_picture">Player profile picture</string>
 </resources>

@@ -13,7 +13,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Search"
+        android:hint="@string/search"
         android:textSize="24sp"
         android:padding="16dp"
         app:startIconDrawable="@drawable/ic_search_24"
