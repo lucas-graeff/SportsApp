@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,12 +15,10 @@ import lucas.graeff.sportsapp.R
 import lucas.graeff.sportsapp.adapters.ViewPagerAdapter
 import lucas.graeff.sportsapp.databinding.FragmentPlayerProfileBinding
 import lucas.graeff.sportsapp.models.Player
-import lucas.graeff.sportsapp.ui.home.HomeViewModel
 
 @AndroidEntryPoint
 class PlayerProfileFragment : Fragment(R.layout.fragment_player_profile) {
     private lateinit var binding: FragmentPlayerProfileBinding
-    private val homeViewModel: HomeViewModel by viewModels()
     private val playerProfileViewModel: PlayerProfileViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -43,14 +39,14 @@ class PlayerProfileFragment : Fragment(R.layout.fragment_player_profile) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //Handles exit button
-        binding.topAppBar.getChildAt(1).setOnClickListener {
+        binding.topAppBar.getChildAt(0).setOnClickListener {
             parentFragmentManager.popBackStack()
         }
 
         val player: Player = playerProfileViewModel.getPlayer()
+        binding.player = player
+
         Picasso.get().load(player.strThumb).into(binding.imgThumbnail)
-        binding.txtPlayerName.text = player.strPlayer
-        binding.txtSport.text = player.strSport
 
 
         binding.viewPager.adapter = ViewPagerAdapter(requireActivity())
@@ -63,20 +59,7 @@ class PlayerProfileFragment : Fragment(R.layout.fragment_player_profile) {
                 }
             }
         }.attach()
-
-        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-
-            }
-        })
+        
     }
 
 }

@@ -1,7 +1,5 @@
 package lucas.graeff.sportsapp.adapters
 
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,7 +29,6 @@ class PlayersAdapter(
                 onItemClicked(adapterPosition)
             }
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -43,14 +40,17 @@ class PlayersAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (players[position].strThumb != null) {
             Picasso.get().load(players[position].strThumb).into(holder.imgView)
+        } else {
+            holder.imgView.setImageResource(R.drawable.ic_person_150)
         }
+
         holder.nameView.text = players[position].strPlayer
         holder.sportView.text = players[position].strSport
         holder.teamView.text = players[position].strTeam
 
         //Set color of sport chip based off on string
-        holder.sportView.chipStrokeColor =
-            ColorStateList.valueOf(Color.parseColor(stringToColor(players[position].strSport)))
+//        holder.sportView.chipStrokeColor =
+//            ColorStateList.valueOf(Color.parseColor(stringToColor(players[position].strSport)))
 
 
         holder.layout.setOnClickListener {
